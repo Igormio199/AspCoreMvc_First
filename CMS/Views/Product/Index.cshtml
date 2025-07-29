@@ -1,0 +1,23 @@
+﻿@using CMS.Models
+
+@model List<Product>
+
+<h1>Список товаров</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

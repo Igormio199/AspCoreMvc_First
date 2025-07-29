@@ -1,0 +1,17 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+        <p>Привет, @User.Identity.Name!</p>
+
+    @if (User.IsInRole("Admin"))
+    {
+                <a asp-controller="Admin" asp-action="Index">Панель администратора</a>
+    }
+
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-link">Выйти</button>
+        </form>
+}
+else
+{
+        <a asp-controller="Account" asp-action="Login">Войти</a>
+}

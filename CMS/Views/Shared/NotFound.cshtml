@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Страница не найдена";
+    Layout = "_Layout"; // Ваш макет
+}
+
+<div class="text-center">
+    <h1 class="display-4">404 - Страница не найдена</h1>
+    <p>Извините, запрашиваемая страница не существует.</p>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">На главную</a>
+</div>

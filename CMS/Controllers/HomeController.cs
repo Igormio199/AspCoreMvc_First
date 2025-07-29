@@ -17,14 +17,23 @@ namespace CMS.Controllers
         {
             return View();
         }
+        public IActionResult GetClientIp()
+        {
+            // Проверяем заголовки на наличие IP (если приложение за прокси)
+            var ipAddress = HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+
+            // Если заголовка нет, берем стандартный IP
+            if (string.IsNullOrEmpty(ipAddress))
+            {
+                ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+            }
+
+            return Content($"Ваш IP-адрес: {ipAddress}");
+        }
 
         public IActionResult Privacy()
         {
-            //return View();
-            int a = 2;
-            int b = 3;
-            int c = a + b;
-            return NotFound();
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
